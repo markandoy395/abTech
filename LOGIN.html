@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup</title>
+    <link rel="stylesheet" href="LOGIN_CSS.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left">
+            <img src="Abtech logo 2.png" alt="Logo" class="top-logo hidden">
+            <h1>Welcome to AbTech</h1>
+            <p class="already-account">Don't have an account?</p>
+            <button class="sign-btn" onclick="toggleClasses()">Sign Up</button>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right">
+            <img src="Abtech logo 1.png" alt="Icon" class="login-icon">
+            
+            <!-- Login Form -->
+            <form id="login-form">
+                <div class="input-container">
+                    <img src="Enter Name (1).png" alt="Username Icon" class="input-icon">
+                    <input type="text" placeholder="Username" required>
+                </div>
+                <div class="input-container">
+                    <img src="Enter Password.png" alt="Password Icon" class="input-icon">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">Log In</button>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signup-form" onsubmit="event.preventDefault(); submitForm();"class="hidden">
+                <h1>Create an Account</h1>
+                <div class="input-container">
+                    <img src="Enter Name (1).png" alt="Username Icon" class="input-icon">
+                    <input type="text" id="name" placeholder="Enter Name" required>
+                </div>
+                <div class="input-container">
+                    <img src="Enter Password.png" alt="Password Icon" class="input-icon">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="input-container">
+                    <img src="Address.png" alt="Address Icon" class="input-icon">
+                    <input type="text" id="address" placeholder="Address" required>
+                </div>
+                <div class="input-container">
+                    <img src="Contact.png" alt="Contact Icon" class="input-icon">
+                    <input type="tel" id="contact" placeholder="Contact Number" required>
+                </div>
+                <div class="input-container">
+                    <img src="Email.png" alt="Email Icon" class="input-icon">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="button-group">
+                    <button type="button" class="user-btn" onclick="setRole('User')">User</button>
+                    <i>or</i>
+                    <button type="button" class="service-provider-btn" onclick="setRole('Service Provider')">Service Provider</button>
+                </div>
+                <input type="hidden" id="role" value="">                
+            
+                <button type="submit" class="signup-btn">Sign Up</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <script>
+        function toggleClasses() {
+            const container = document.querySelector('.container');
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const signUpText = document.querySelector('.already-account');
+            const signUpButton = document.querySelector('.sign-btn');
+            const signUpText1 = document.querySelector("h1");
+            const loginIcon = document.querySelector('.login-icon');
+            const topLogo = document.querySelector('.top-logo'); // Logo inside the left section
+
+            // Hide the logo when Sign Up is clicked
+            if (signupForm.classList.contains('hidden')) {
+                loginIcon.style.opacity = "0";
+                loginIcon.style.visibility = "hidden";
+            }
+
+            // Swap left and right sections
+            container.classList.toggle('swapped');
+
+            // Toggle visibility of the forms
+            loginForm.classList.toggle('hidden');
+            signupForm.classList.toggle('hidden');
+
+            // Update button and text for toggle functionality
+            if (signupForm.classList.contains('hidden')) {
+                signUpText.textContent = "Don't have an account?";
+                signUpButton.textContent = "Sign Up";
+                // Show the logo again when Log In is clicked
+                loginIcon.style.opacity = "1";
+                loginIcon.style.visibility = "visible";
+                topLogo.style.display = 'none'; // Hide the logo when swapping back to log in
+            } else {
+                signUpText1.textContent = "HELLO NEW USER!"
+                signUpText.textContent = "Already have an account?";
+                signUpButton.textContent = "Log In";
+                topLogo.style.display = 'block'; // Show the logo when swapping to sign up
+            }
+        }
+
+        const userButton = document.querySelector('.user-btn');
+        const serviceProviderButton = document.querySelector('.service-provider-btn');
+
+        // Function to toggle the "clicked" class
+        function handleButtonClick(event) {
+            // Remove the "clicked" class from both buttons
+            userButton.classList.remove('clicked');
+            serviceProviderButton.classList.remove('clicked');
+
+            // Add the "clicked" class to the clicked button
+            event.target.classList.add('clicked');
+        }
+
+        let role = ''; // Initialize a variable to track the selected role
+
+function setRole(selectedRole) {
+    role = selectedRole;
+    document.getElementById('role').value = selectedRole; // Update the hidden input field
+    alert(`Role selected: ${selectedRole}`);
+}
+
+        // Add click event listeners
+        userButton.addEventListener('click', handleButtonClick);
+        serviceProviderButton.addEventListener('click', handleButtonClick);
+
+        function submitForm() {
+    // Get form values
+    const name = document.getElementById('name').value;
+    const password = document.getElementById('password').value;
+    const address = document.getElementById('address').value;
+    const contact = document.getElementById('contact').value;
+    const email = document.getElementById('email').value;
+    const role = document.getElementById('role').value; // Get the role
+
+    // Validate that a role is selected
+    if (!role) {
+        alert('Please select a role (User or Service Provider).');
+        return;
+    }
+
+    // Create the form data object
+    const formData = {
+        name,
+        password,
+        address,
+        contact,
+        email,
+        role
+    };
+
+    // Make the fetch request
+    fetch('LOGIN_PHP.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Redirect based on the role
+                if (role === 'User') {
+                    alert('Sign-up successful! Redirecting to User dashboard...');
+                    window.location.href = 'LOGIN.html';
+                    console.log('User ID:', data.user_id); // Log the user ID to the console
+                } else if (role === 'Service Provider') {
+                    console.log('User ID:', data.user_id); // Log the user ID to the console
+
+                    alert('Sign-up successful! Redirecting to Service Provider portal...');
+                    window.location.href = `category_skill.html?user_id=${data.user_id}`;
+                }
+            } else {
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error submitting form:', error);
+            alert('There was an error submitting the form.');
+        });
+}
+
+
+// Ensure the "Sign Up" button calls the `submitForm` function
+document.querySelector('.signup-btn').addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent the form's default submission behavior
+    submitForm();
+});
+document.getElementById('login-form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const username = document.querySelector('#login-form input[type="text"]').value;
+    const password = document.querySelector('#login-form input[type="password"]').value;
+
+    if (!username || !password) {
+        alert('Please enter both username and password.');
+        return;
+    }
+
+    fetch('check_login.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password }),
+})
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = `Home.html?user_id=${data.user_id}`;
+            localStorage.setItem('user_id', data.user_id);
+            console.log('User ID stored:', data.user_id); // Log the user ID to check
+        } else {
+            alert('Invalid credentials.');
+        }
+    })
+   
+
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred during login.');
+        });
+});
+
+
+    </script>
+</body>
+</html>

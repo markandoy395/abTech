@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AbTech Header</title>
+  <link rel="stylesheet" href="home.css"> <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+  <header class="header">
+    <!-- Logo Section -->
+    <div class="logo">
+        <img src="Abtech logo 3.png" alt="AbTech Logo">
+    </div>
+
+    <div class="icons d-flex align-items-center">
+      <!-- Profile Circle with Icon inside -->
+      <div class="profile-circle d-flex justify-content-center align-items-center me-3">
+          <img src="download (1).png" alt="Profile" class="img-fluid"> <!-- Replace with your profile image -->
+          <!-- You can add an icon inside the circle if needed, or just use the image -->
+      </div>
+      <!-- Logout Button -->
+      <button class="logout-button" onclick="handleLogout()">Logout</button>
+  </div>
+  
+</header>
+
+  <div class="content-placeholder">
+    <img id="rotating-image" src="1.jpg" alt="Rotating Image1">
+  </div>
+  <div class="menu-container">
+    <div class="menu">
+      <select id="category">
+        <option value="">Category</option>
+        <option value="category1">Category 1</option>
+        <option value="category2">Category 2</option>
+      </select>
+      <select id="location">
+        <option value="">Location</option>
+        <option value="location1">Location 1</option>
+        <option value="location2">Location 2</option>
+      </select>
+      <select id="rating">
+        <option value="">Best Rating</option>
+        <option value="high">High</option>
+        <option value="low">Low</option>
+      </select>
+    </div>
+  
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." id="search-input">
+      <button id="search-button">Search</button>
+    </div>
+  </div>
+  <div class="skill-container">
+    <h2 class="skills-header">Skills of Our People</h2> <!-- Header for the skill list -->
+    <div class="skills-grid" id="skillsGrid">
+        <!-- Skill boxes will be dynamically loaded here -->
+    
+    </div>
+</div>
+  
+  
+  <section class="team-section">
+    <div class="team-header">
+      <h1>Meet Our Team</h1>
+      <p>Student of North Eastern Mindanao State University</p>
+    </div>
+    <div class="team-container">
+      <!-- Team Member -->
+      <div class="team-card">
+        <div class="team-image">
+          <img src="team 1.png" alt="Team Member">
+        </div>
+        
+      </div>
+      <div class="team-card">
+        <div class="team-image">
+          <img src="team 2.png" alt="Team Member">
+        </div>
+      
+      </div>
+      <div class="team-card">
+        <div class="team-image">
+          <img src="team 3.png" alt="Team Member">
+        </div>
+      
+      </div>
+      <div class="team-card">
+        <div class="team-image">
+          <img src="team 4.png" alt="Team Member">
+        </div>
+      
+      </div>
+      <div class="team-card">
+        <div class="team-image">
+          <img src="team 5.png" alt="Team Member">
+        </div>
+      
+      </div>
+    </div>
+    <footer class="team-footer">
+      <div class="footer-logo">
+        <img src="Abtech logo 4.png" alt="Logo">
+      </div>
+      <p>NEMSU-LC<br>Lianga, Surigao del Sur<br>Philippines</p>
+      <p>&copy; Copyright AbTech. All Rights Reserved</p>
+    </footer>
+  </section>
+
+  
+  <div class="container">
+    <div class="page-title">
+        <button class="back-button">
+            <i class="fas fa-arrow-left"></i> <!-- Font Awesome Icon for Back -->
+        </button>
+        <h1>Profile</h1>
+    </div>
+    <div class="content-wrapper">
+    <div class="grid-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Book Title at the top of the sidebar -->
+          <div class="book-title">
+            <h2>Book Status</h2>
+          </div>
+        
+          <!-- Container for dynamically injected name cards -->
+          <div id="nameCardContainer">
+            <!-- Dynamic content will be added here -->
+          </div>
+        </div>
+        
+        
+    </div>
+    
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <div class="profile-header">
+            <div class="profile-avatar">
+              <img src="5.jpg" alt="profile" id="profile-image">
+              <input type="file" id="file-input" accept="image/*" style="display: none;">
+          </div>
+          
+         
+          </div>
+
+          <div class="personal-info">
+            <div class="info-header">
+                <h3 class="info-title">Personal Info</h3>
+                <button class="edit-button">Edit</button>
+            </div>
+        
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>Full Name</label>
+                    <p id="user-name">Loading...</p> <!-- The name will be dynamically inserted here -->
+                  </div>
+                <div class="info-item">
+                    <label>Email</label>
+                    <p id="user-email">Loading...</p> <!-- The email will be dynamically inserted here -->
+                </div>
+                <div class="info-item">
+                    <label>Phone</label>
+                    <p id="user-contact">Loading...</p> <!-- The contact will be dynamically inserted here -->
+                </div>
+                <div class="info-item">
+                    <label>Address</label>
+                    <p id="user-address">Loading...</p> <!-- The address will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+</div>
+<div class="provider-overall-container"id="providerContainer" style="display: none;">
+  <header class="provider-header">
+    <button id="back-Button" class="back-button">&larr; Back</button>
+    Service Provider Profile
+  </header><div class="provider-container">    <div class="provider-sidebar">
+
+        <h2>Services</h2>
+        <h3 class="categories-title">Categories</h3>
+        <ul class="provider-categories">
+          <li>
+            <details>
+              <summary>Tech Assistance</summary>
+              <ul>
+                <li>Computer Technician</li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Dancer</summary>
+              <ul>
+                <li>Macho Dancer</li>
+                <li>Valley Dancer</li>
+                <li>Pool Dancer</li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Others</summary>
+              <ul>
+                <li>Masseuse</li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </div>
+      
+    <div class="provider-profile">
+        <div class="provider-profile-header">
+          <img src="2.jpg" alt="Profile Picture">
+            <div>
+              <h2 id="providerName1">Gaviola</h2>
+                
+            </div>
+            <div class="hire-button-container">
+              <button id="hireButton" class="hire-button">Hire</button>
+            </div>
+            
+        </div>
+        <div class="provider-bio">
+            <p>"Hi, I'm Gaviola, a professional macho dancer, and I'm so hot that girls literally melt in my presence! My performances are so amazing, I'll dance you straight to heaven. Warning: side effects may include uncontrollable laughter, second-hand embarrassment, and questioning your life choices!"</p>
+        </div>
+        <div class="provider-personal-info">
+          <h3 class="personal-info-title">Personal Info</h3>
+          <div class="personal-info-items">
+            <p class="personal-info-item"><strong>Name:</strong> <span id="providerName"></span></p>
+            <p class="personal-info-item"><strong>Email:</strong> <span id="providerEmail"></span></p>
+            <p class="personal-info-item"><strong>Phone:</strong> <span id="providerPhone"></span></p>
+            <p class="personal-info-item"><strong>Address:</strong> <span id="providerAddress"></span></p>
+          </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+<div class="provider-reviews-container">
+    <h2 class="provider-reviews-title">Done Works</h2>
+<div class="provider-reviews">
+   
+         </div>
+     </div>
+  </div>
+   <div class="overall-service-container">
+<header class="service-provider-header">Service Provider Profile</header>
+<div class="service-provider-container">
+  <div class="service-provider-booking">
+    <h2>Booking Table</h2>
+    <table>
+      <tr>
+        <th>Service</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Action</th>
+      </tr>
+      <!-- The rows will be added dynamically by JavaScript -->
+    </table>
+  </div>
+  
+   
+ <div class="service-provider-profile">
+    <div class="service-provider-profile-header">
+        <img src="default.png" alt="Profile Picture">
+        <div>
+            <h2 id="name1">Gaviola</h2>
+        </div>
+    </div>
+    <div class="service-provider-bio">
+      <div class="service-section-header">
+          <button class="service-edit-button" onclick="toggleBioEdit()">Edit Bio</button>
+      </div>
+      <p id="bio-text" contenteditable="false">
+          "Hi, I'm Gaviola, a professional macho dancer, and I'm so hot that girls literally melt in my presence! My performances are so amazing, I'll dance you straight to heaven. Warning: side effects may include uncontrollable laughter, second-hand embarrassment, and questioning your life choices!"
+      </p>
+  </div>
+    <div class="service-provider-personal-info">
+      <div class="service-section-header">
+        <h3>Personal Info</h3>
+        <button class="service-edit-button-info" onclick="toggleEdit()">Edit Info</button>
+      </div>
+      <p><strong>Name:</strong> <span class="editable" id="name">Gaviola</span></p>
+      <p><strong>Email:</strong> <span class="editable" id="email">Email@Example.com</span></p>
+      <p><strong>Phone:</strong> <span class="editable" id="phone">0000 000 0000</span></p>
+      <p><strong>Address:</strong> <span class="editable" id="address">Lianga Surigao del Sur</span></p>
+    </div>
+    
+    
+</div>
+<div class="service-provider-sidebar">
+  <h2>Services</h2>
+  <ul class="service-provider-categories">
+    <li>
+      <details>
+        <summary>Tech Assistance</summary>
+        <ul>
+          <li>Computer Technician</li>
+        </ul>
+      </details>
+    </li>
+    <li>
+      <details>
+        <summary>Dancer</summary>
+        <ul>
+          <li>Macho Dancer</li>
+          <li>Valley Dancer</li>
+          <li>Pool Dancer</li>
+        </ul>
+      </details>
+    </li>
+    <li>
+      <details>
+        <summary>Others</summary>
+        <ul>
+          <li>Masseuse</li>
+        </ul>
+      </details>
+    </li>
+    <li>
+      <button class="add-service-button">Add service</button>
+    </li>
+  </ul>
+</div>
+</div>
+<div class="service-insert-project-container">
+  <input type="text" id="project_info" class="project-input" placeholder="Insert project info" required />
+  <div class="button-container">
+    <button type="button" class="insert-photo-button">Insert photo</button>
+    <button type="button" class="post-project-button">Post Project</button>
+  </div>
+</div>
+
+<!-- Hidden file input -->
+<input type="file" id="fileInput" accept="image/*" style="display: none;" /> 
+<div class="service-provider-reviews-container">
+  <h2 class="service-provider-reviews-title">Done Works</h2>
+  <div class="service-provider-reviews" id="review-cards-container">
+      <!-- Review cards will be inserted here dynamically -->
+  </div>
+</div>
+
+</div>
+  <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+            const userId = localStorage.getItem('user_id'); // Get user_id from localStorage
+            console.log('User ID retrieved from localStorage:', userId); // Log the user ID to check
+
+            if (!userId || userId.trim() === "") {
+                // Redirect to login if user_id is missing or empty
+                window.location.href = "login.html";
+            }
+        });
+        function handleLogout() {
+            localStorage.removeItem('user_id'); // Remove user_id
+            window.location.href = "login.html"; // Redirect to login
+        }
+   // JavaScript for rotating images with slide-in effect
+const contentPlaceholder = document.querySelector('.content-placeholder');
+
+// Array of image sources
+const images = [
+  '1.jpg',
+  '2.jpg',
+  '3.jpg',
+  '4.jpg',
+  '5.jpg',
+  '6.jpg'
+];
+
+let currentIndex = 0;
+
+// Function to rotate images
+function rotateImage() {
+  // Create a new image element
+  const newImage = document.createElement('img');
+  newImage.src = images[currentIndex];
+  newImage.alt = `Image ${currentIndex + 1}`;
+  newImage.classList.add('slide-in');
+
+  // Append the new image to the content-placeholder
+  contentPlaceholder.appendChild(newImage);
+
+  // Remove the previous image after animation
+  setTimeout(() => {
+    if (contentPlaceholder.firstChild !== newImage) {
+      contentPlaceholder.removeChild(contentPlaceholder.firstChild);
+    }
+  }, 1000); // Matches the animation duration
+
+  // Update index for the next image
+  currentIndex = (currentIndex + 1) % images.length;
+}
+
+// Rotate image every 3 seconds
+setInterval(rotateImage, 3000);
+let globalProviderId = null;
+fetch('profile.php')
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.error) {
+      const skillsGrid = document.getElementById('skillsGrid');
+      skillsGrid.innerHTML = `<p>Error: ${data.error}</p>`;
+      return;
+    }
+
+    const skillsGrid = document.getElementById('skillsGrid');
+
+    // Function to populate the provider info section
+    function populateProviderInfo(profile) {
+      document.getElementById('providerName').textContent = profile.name;
+      document.getElementById('providerName1').textContent = profile.name;
+      document.getElementById('providerAddress').textContent = profile.address;
+      document.getElementById('providerPhone').textContent = profile.contact_number;
+
+      // Fetch email based on user_id
+      fetch(`retrieve_email.php?user_id=${profile.id}`)
+        .then((response) => response.json())
+        .then((emailData) => {
+          if (emailData.success) {
+            document.getElementById('providerEmail').textContent = emailData.email;
+          } else {
+            console.error('Error fetching email:', emailData.message);
+            document.getElementById('providerEmail').textContent = 'Email not found';
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching email:', error);
+          document.getElementById('providerEmail').textContent = 'Error fetching email';
+        });
+
+      // Fetch project info based on user_id
+      fetch(`get_user_project.php?user_id=${profile.id}`)
+        .then((response) => response.json())
+        .then((projectData) => {
+          if (projectData.success) {
+            const reviewsContainer = document.querySelector('.provider-reviews');
+
+            // Loop through the project data and add the review cards
+            projectData.projects.forEach((project) => {
+              const reviewCard = document.createElement('div');
+              reviewCard.className = 'review-card';
+
+              reviewCard.innerHTML = `
+                <img src="${project.photo_path || 'default_project_image.jpg'}" alt="Project Image">
+                <h4>Name: ${profile.name}</h4>
+                <p class="review-address"><strong>Address: ${profile.address}</strong></p>
+                <p class="provider-stars">★★★★★</p>
+                <p>${project.project_info}</p>
+              `;
+
+              reviewsContainer.appendChild(reviewCard);
+            });
+          } else {
+            console.error('Error fetching project data:', projectData.message);
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching project data:', error);
+        });
+    }
+
+    // Function to show or hide elements
+    function toggleVisibility(elements, displayStyle) {
+      elements.forEach((element) => {
+        element.style.display = displayStyle;
+      });
+    }
+
+    // Loop through each profile and create the skill box
+    data.forEach((profile) => {
+      console.log('Profile ID:', profile.id); // Log profile ID to the console
+
+      const skillBox = document.createElement('div');
+      skillBox.className = 'skill-box';
+
+      // Add the inner HTML for the skill box
+      skillBox.innerHTML = `
+        <div class="content">
+          <img src="${profile.project_image || 'download1.png'}" alt="Project Image" class="content-image" />
+        </div>
+        <div class="profile-card">
+          <img src="${profile.avatar_image || 'default.png'}" alt="Avatar" class="avatar" />
+          <div class="details">
+            <p class="name">${profile.name}</p>
+            <p class="address">${profile.address}</p>
+            <p class="contact-number">📞 ${profile.contact_number}</p>
+            <div class="rating">
+              ${'⭐'.repeat(profile.rating)}
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Add click event to display the provider container and hide others
+      skillBox.addEventListener('click', () => {
+        globalProviderId = profile.id;
+        console.log('Provider ID clicked:', globalProviderId);
+        const providerContainer = document.getElementById('providerContainer');
+        populateProviderInfo(profile);
+
+        // Show the provider container
+        providerContainer.style.display = 'block';
+        console.log("Provider container displayed");
+
+        // Hide other sections
+        const sectionsToHide = document.querySelectorAll(
+          '.menu, .content-placeholder, .search-bar, .skill-container, .team-section, .overall-service-container'
+        );
+        console.log("Sections to hide: ", sectionsToHide);
+
+        toggleVisibility(sectionsToHide, 'none');
+      });
+
+      // Append the skill box to the skills grid
+      skillsGrid.appendChild(skillBox);
+    });
+
+    // Optional: Close provider container when clicking outside
+    document.addEventListener('click', (event) => {
+      const providerContainer = document.getElementById('providerContainer');
+
+      if (
+        providerContainer.style.display === 'block' &&
+        !providerContainer.contains(event.target) &&
+        !event.target.closest('.skill-box')
+      ) {
+        providerContainer.style.display = 'none';
+
+        // Show other hidden sections
+        toggleVisibility(
+          document.querySelectorAll('.menu, .content-placeholder, .search-bar, .skill-container, .team-section'),
+          ''
+        );
+      }
+    });
+  })
+  .catch((error) => {
+    console.error('Error fetching profiles and projects:', error);
+  });
+
+
+
+// Select elements to show and hide
+const elementsToHide = document.querySelectorAll(
+    '.menu, .content-placeholder, .search-bar, .skill-container, .team-section, overall-service-container'
+);
+const elementsToShow = document.querySelectorAll('.container');
+
+// Back button click handler
+document.querySelector('.back-button').addEventListener('click', () => {
+    // Show the previously hidden elements
+    elementsToHide.forEach((element) => {
+        element.style.display = 'block';
+    });
+
+    // Hide the container elements
+    elementsToShow.forEach((element) => {
+        element.style.display = 'none';
+    });
+});
+
+
+document.getElementById("profile-image").addEventListener("click", function() {
+    document.getElementById("file-input").click();  // Trigger the file input when the image is clicked
+});
+
+document.getElementById("file-input").addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById("profile-image").src = e.target.result; // Update the image preview with the selected file
+        };
+        reader.readAsDataURL(file);
+
+        // Now upload the file to the server and save the file name in the database
+        uploadImage(file);
+    }
+});
+
+// Function to retrieve user_id from the URL
+function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+// Function to upload the image and save the filename in the database
+function uploadImage(file) {
+    const userId = getQueryParam('user_id'); // Get the user_id from the URL
+    if (!userId) {
+        console.error('User ID is missing');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('user_id', userId);  // Include the user_id
+
+    // Send the file and user_id to the PHP backend for processing
+    fetch('pload_profile_image.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Image uploaded successfully!');
+            console.log('Image uploaded:', data.imageName);  // Log the uploaded image filename
+        } else {
+            console.error('Error uploading image:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error uploading image:', error);
+    });
+}
+
+ function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Retrieve the user_id from the URL
+    const userId = getQueryParam('user_id');
+    
+    if (userId) {
+        console.log('User ID:', userId); // You can use the user_id for any purpose here
+        // You can also display it on the page or use it for further processing
+    } else {
+        console.log('No user_id found in the URL.');
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+    let userId = null;
+
+    // Fetch user data when profile circle is clicked
+    document.querySelector('.profile-circle').addEventListener('click', function () {
+        userId = new URLSearchParams(window.location.search).get('user_id');
+        
+        if (userId) {
+            fetch(`fetch_userid.php?user_id=${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const userData = data.data;
+
+                        // Handle user's role and visibility toggles
+                        if (userData.role === 'user') {
+                            document.querySelectorAll('.container').forEach(el => el.style.display = 'block');
+                            document.querySelectorAll('.overall-service-container').forEach(el => el.style.display = 'none');
+                            document.getElementById('user-name').innerText = userData.name;
+                            document.getElementById('user-email').innerText = userData.email;
+                            document.getElementById('user-contact').innerText = userData.contact;
+                            document.getElementById('user-address').innerText = userData.address;
+                        } else if (!userData.role) {
+                            document.querySelectorAll('.overall-service-container').forEach(el => el.style.display = 'block');
+                            document.querySelectorAll('.container').forEach(el => el.style.display = 'none');
+                            document.getElementById('name').innerText = userData.name;
+                            document.getElementById('name1').innerText = userData.name;
+                            document.getElementById('email').innerText = userData.email;
+                            document.getElementById('phone').innerText = userData.contact;
+                            document.getElementById('address').innerText = userData.address;
+                        }
+
+                        document.querySelectorAll('.menu, .content-placeholder, .search-bar, .skill-container, .team-section').forEach(el => el.style.display = 'none');
+                    } else {
+                        console.log('Error:', data.message);
+                    }
+                })
+                .catch(error => console.error('Error fetching user data:', error));
+        } else {
+            console.log('No user_id in the URL');
+        }
+    });
+
+    // Insert photo button logic
+    const insertPhotoButton = document.querySelector(".insert-photo-button");
+    const fileInput = document.getElementById("fileInput");
+    const postProjectButton = document.querySelector(".post-project-button");
+
+    insertPhotoButton.addEventListener("click", () => {
+        fileInput.click();
+    });
+
+    postProjectButton.addEventListener("click", () => {
+        if (!userId) {
+            alert("User ID is missing. Please login again.");
+            return;
+        }
+
+        const projectInfo = document.getElementById("project_info").value;
+        const photoFile = fileInput.files[0];
+
+        if (!projectInfo || !photoFile) {
+            alert("Please fill in the project info and select a photo.");
+            return;
+        }
+
+        // Prepare FormData to send via fetch
+        const formData = new FormData();
+        formData.append("project_info", projectInfo);
+        formData.append("photo", photoFile);
+        formData.append("user_id", userId); // Append user_id here
+
+        fetch("provider-post-project.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text()) // Handle response
+        .then(data => {
+            console.log("Project posted:", data);
+            alert("Project posted successfully!");
+        })
+        .catch(error => {
+            console.error("Error posting project:", error);
+            alert("Error posting project.");
+        });
+    });
+});
+
+
+let isEditing = false;
+
+function toggleEdit() {
+const button = document.querySelector('.service-edit-button-info');
+const editableFields = document.querySelectorAll('.editable');
+
+if (!isEditing) {
+// Switch to edit mode
+editableFields.forEach(field => {
+  const currentText = field.textContent;
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = currentText;
+  input.className = 'edit-input';
+  input.dataset.originalId = field.id; // Store original ID for saving later
+  field.replaceWith(input);
+});
+button.textContent = 'Save Info'; // Change button text to "Save Info"
+} else {
+// Save and switch back to view mode
+const inputs = document.querySelectorAll('.edit-input');
+inputs.forEach(input => {
+  const newText = input.value;
+  const span = document.createElement('span');
+  span.className = 'editable';
+  span.id = input.dataset.originalId;
+  span.textContent = newText;
+  input.replaceWith(span);
+});
+button.textContent = 'Edit Info'; // Change button text back to "Edit Info"
+}
+isEditing = !isEditing;
+}
+function toggleBioEdit() {
+    const bioText = document.getElementById('bio-text');
+    const isEditable = bioText.contentEditable === "true";
+    bioText.contentEditable = isEditable ? "false" : "true";
+    document.querySelector('.service-edit-button').innerText = isEditable ? "Edit Bio" : "Save Bio";
+}// Function to get query parameter value
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const userId = getQueryParam('user_id');
+    
+    if (userId) {
+        console.log('User ID:', userId); // Display user_id in console
+
+        // Function to fetch user profile and projects data for the specific user
+        function fetchUserProfileAndProjects() {
+            fetch(`etch_project.php?user_id=${userId}`)
+                .then(response => response.text()) // Get raw response text
+                .then(data => {
+                    console.log("Raw Response:", data); // Log the raw response
+
+                    try {
+                        const jsonData = JSON.parse(data); // Try to parse the response as JSON
+                        
+                        if (jsonData.success) {
+                            const profile = jsonData.profile; // Profile data
+                            const projects = jsonData.projects; // Array of project data
+                            const reviewContainer = document.getElementById('review-cards-container');
+
+                            // Clear previous cards
+                            reviewContainer.innerHTML = '';
+
+                            // Loop through all projects and create review cards
+                            projects.forEach(project => {
+                                const reviewCard = document.createElement('div');
+                                reviewCard.classList.add('service-review-card');
+
+                                reviewCard.innerHTML = `
+                                    <img class="reviewer-image" src="${project.photo_path || 'images(7).png'}" alt="Reviewer Picture">
+                                    <div class="reviewer-info">
+                                        <img src="${project.photo_path || 'images(7)'}" alt="Reviewer Image" class="small-image">
+                                        <div class="name-and-address">
+                                            <h4>${profile.name}</h4>
+                                            <p class="address">${profile.address}</p>
+                                        </div>
+                                    </div>
+                                    <p class="service-provider-stars">${'★'.repeat(profile.rating)}</p>
+                                    <p>${project.project_info}</p>
+                                `;
+
+                                // Append the review card to the container
+                                reviewContainer.appendChild(reviewCard);
+                            });
+                        } else {
+                            console.log('Error:', jsonData.message);
+                        }
+                    } catch (error) {
+                        console.error('Error parsing JSON:', error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching user profile and projects:', error);
+                });
+        }
+
+        // Call the function to fetch and display the profile and projects
+        fetchUserProfileAndProjects();
+    } else {
+        console.log('No user_id found in the URL.');
+    }
+});
+// Function to get query parameters (e.g., user_id)
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+// Get the user_id from the URL
+
+if (userId) {
+  // Fetch email from the server using user_id
+  fetch(`retrieve_email.php?user_id=${userId}`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        // Display the retrieved email in the providerEmail span
+        document.getElementById('providerEmail').textContent = data.email;
+      } else {
+        console.error('Error fetching email:', data.message);
+        document.getElementById('providerEmail').textContent = 'Email not found';
+      }
+    })
+    .catch((error) => {
+      console.error('Error fetching email:', error);
+      document.getElementById('providerEmail').textContent = 'Error fetching email';
+    });
+} else {
+  console.error('No user_id found in the URL.');
+  document.getElementById('providerEmail').textContent = 'No user_id found';
+}function sendHireRequest(serviceType) {
+  if (!globalProviderId || !userId) {
+    alert('Provider or User ID is missing!');
+    return;
+  }
+
+  // Prepare data to send to the backend
+  const requestData = {
+    user_id: userId,
+    provider_id: globalProviderId,
+    service_type: serviceType
+  };
+
+  // Send data to PHP via Fetch API
+  fetch('hire.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(requestData)
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.success) {
+      alert('Hire request sent successfully!');
+    } else {
+      alert('Error: ' + data.error);
+    }
+  })
+  .catch((error) => {
+    console.error('Error sending hire request:', error);
+    alert('An error occurred while sending the hire request.');
+  });
+}
+
+// Wait for the DOM to fully load before adding event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const hireButton = document.getElementById('hireButton');
+
+  if (hireButton) {
+    hireButton.addEventListener('click', () => {
+      const serviceType = "your_service_type";  // Replace with the actual service type you want to send
+      sendHireRequest(serviceType);
+    });
+  } else {
+    console.error('Hire button not found');
+  }
+});
+
+// Function to fetch and display the booking requests
+function loadBookingRequests(userId) {
+  fetch(`get.php?user_id=${userId}`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        console.error('Error fetching requests:', data.error);
+        return;
+      }
+
+      const tableBody = document.querySelector('.service-provider-booking table tbody');
+      tableBody.innerHTML = ''; // Clear existing rows
+
+      // Loop through the request data and create table rows
+      data.requests.forEach((request) => {
+        const row = document.createElement('tr');
+
+        // Format the date and time (optional, depending on how your data is formatted)
+        const formattedDate = new Date(request.request_date).toLocaleDateString();
+        const formattedTime = new Date(request.created_at).toLocaleTimeString();
+
+        // Create table cells
+        row.innerHTML = `
+          <td>${request.service_type}</td>
+          <td>${formattedDate}</td>
+          <td>${formattedTime}</td>
+          <td>
+            <button class="action-button approve-button" data-request-id="${request.id}" data-status="approved">Approve</button>
+            <button class="action-button reject-button" data-request-id="${request.id}" data-status="rejected">Reject</button>
+          </td>
+        `;
+
+        // Append the row to the table body
+        tableBody.appendChild(row);
+      });
+
+      // Attach click event listeners to action buttons
+      const actionButtons = document.querySelectorAll('.action-button');
+      actionButtons.forEach((button) => {
+        button.addEventListener('click', handleActionButtonClick);
+      });
+    })
+    .catch((error) => {
+      console.error('Error loading requests:', error);
+    });
+}
+loadBookingRequests(userId);
+
+// Handle the click event for approve/reject buttons
+function handleActionButtonClick(event) {
+  const button = event.target;
+  const requestId = button.getAttribute('data-request-id');
+  const status = button.getAttribute('data-status');
+
+  // Send the status update to the backend
+  fetch('update_status.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ request_id: requestId, status: status }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        alert(`Request ${status} successfully!`);
+        loadBookingRequests(userId); // Refresh the booking table
+      } else {
+        alert('Error: ' + data.error);
+      }
+    })
+    .catch((error) => {
+      console.error('Error updating request status:', error);
+      alert('An error occurred while updating the status.');
+    });
+}document.addEventListener('DOMContentLoaded', () => {
+  const getQueryParam = (param) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  };
+
+  const userId = getQueryParam('user_id');
+
+  if (!userId) {
+    console.error('User ID is required');
+    return;
+  }
+
+  fetch(`user_booking.php?user_id=${userId}`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        console.error('Error:', data.error);
+        return;
+      }
+
+      const nameCardContainer = document.getElementById('nameCardContainer');
+
+      // Clear existing content
+      nameCardContainer.innerHTML = '';
+
+      // Dynamically add name cards
+      data.profiles.forEach((profile) => {
+        const card = document.createElement('div');
+        card.className = 'name-card';
+        card.innerHTML = `
+          <div class="name-card-left">
+            <div class="avatar">
+              <img src="1.jpg" alt="Avatar" />
+            </div>
+            <div class="name-info">
+              <p class="name">${profile.name || 'Unknown'}</p>
+              <p class="address">${profile.address || 'No Address Provided'}</p>
+              <p class="status">${profile.status || 'N/A'}</p>
+            </div>
+          </div>
+          <div class="checkbox-wrapper">
+            <input type="checkbox">
+          </div>
+        `;
+        nameCardContainer.appendChild(card);
+      });
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+    });
+});
+
+
+
+  </script>
+</body>
+</html>

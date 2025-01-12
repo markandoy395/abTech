@@ -1,0 +1,275 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Fallback background color */
+    background-image: url('construction-site-silhouettes.jpg'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+.container {
+    display: flex;
+    width: 700px;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+}
+
+.left, .right {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.left {
+    background-color: #1e2934;
+    color: rgb(255, 255, 255);
+    left: 0;
+    z-index: 2;
+    width: 45%;
+}
+
+.right {
+    background-color: white;
+    right: 0;
+    z-index: 1;
+    width: 45%;
+}
+
+.container.swapped .left {
+    left: 50%;
+    z-index: 2;
+}
+
+.container.swapped .right {
+    right: 50%;
+    z-index: 1;
+}
+.container.swapped .left .already-account {
+    position: absolute;
+    top: 300px;
+    display:none;
+}
+.container.swapped .left .sign-btn{
+    display: none;
+}
+.container.swapped .left h1{
+    position: relative;
+    bottom: 70px;
+    font-size: 2.3em;
+}
+.container.swapped .left img{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    bottom:50px;
+}
+.left h1 {
+    margin: 40px 0 10px;
+    font-size: 3em;
+}
+
+.left .already-account {
+    font-size: 1em;
+    margin-top: 70px;
+}
+
+.sign-btn {
+    background-color: rgb(206, 127, 17);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    align-self: stretch;
+    text-align: center;
+}
+
+.sign-btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.right img.login-icon {
+    width: 200px;
+    position:absolute;
+    height: 200px;
+    top:30px;
+}
+
+form {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 15px;
+    display: flex;
+    top:80px;
+    align-items: center;
+}
+
+.input-container .input-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    margin-top: 10px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.input-container input:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+form .login-btn, form .signup-btn {
+    background-color: rgb(206, 127, 17);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: stretch;
+    text-align: center;
+}
+.login-btn{
+    position: relative;
+    top:80px;
+}
+form .login-btn:hover, form .signup-btn:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 110px;
+    margin-bottom: 20px;
+}
+
+.button-group button {
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.user-btn {
+    width: 250px;
+}
+
+.service-provider-btn {
+    width: 700px;
+    margin-right: 0px; /* Set custom width for User button */
+    /* Set custom width for Service Provider button */
+}
+
+.button-group i {
+    margin: 0 10px; /* Add more space around the "or" text */
+    font-size: 1.2em;
+}
+
+/* Hover effect */
+.button-group button:hover, .button-group button.clicked {
+    background-color: #0056b3; /* The color when hovered or clicked */
+    border-color: #0056b3;
+    color: white;
+}
+
+#signup-form h1{
+    font-size: 2em;
+    position: absolute;
+}
+
+/* Enhancements for the Sign Up Form */
+#signup-form {
+    position: absolute;
+    background-color: #fefefe;
+    padding: 20px; /* Increased padding for better spacing */
+    border-radius: 0px;
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 20%;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Input spacing and styling for the Sign Up form */
+#signup-form .input-container {
+    margin-bottom: 10px; /* Increased margin between input fields */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Input fields inside the Sign Up form */
+#signup-form .input-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+/* Logo initially hidden */
+.left .top-logo {
+    display: none;
+    margin-bottom: 20px;
+    width: 130px; /* Set width to 80px */
+    height: 130px; /* Set height to 80px */
+}
+
+/* Logo visible after user clicks sign up */
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

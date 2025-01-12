@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill or Services</title>
+    <link rel="stylesheet" href="category_css.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>What is your Skill or Services</h1>
+            <button class="continue-button">Continue</button>
+        </div>
+        <div class="content">
+            <div class="categories-section">
+                <div class="categories">
+                    <div class="dropdown">
+                        <label for="art-services">Art Services</label>
+                        <select id="art-services">
+                            <option value="" disabled selected></option>
+                            <option value="painting">Painting</option>
+                            <option value="sculpture">Sculpture</option>
+                            <option value="digital-art">Digital Art</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <label for="construction">Construction & Fabrication</label>
+                        <select id="construction">
+                            <option value="" disabled selected></option>
+                            <option value="carpentry">Carpentry</option>
+                            <option value="welding">Welding</option>
+                            <option value="masonry">Masonry</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <label for="tech-assistance">Tech Assistance</label>
+                        <select id="tech-assistance">
+                            <option value="" disabled selected></option>
+                            <option value="software">Software Support</option>
+                            <option value="hardware">Hardware Repair</option>
+                            <option value="networking">Networking</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <label for="event-media">Event & Media</label>
+                        <select id="event-media">
+                            <option value="" disabled selected></option>
+                            <option value="photography">Photography</option>
+                            <option value="videography">Videography</option>
+                            <option value="event-planning">Event Planning</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <label for="personal-care">Personal Care</label>
+                        <select id="personal-care">
+                            <option value="" disabled selected></option>
+                            <option value="hairstyling">Hairstyling</option>
+                            <option value="makeup">Makeup</option>
+                            <option value="massage">Massage</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-service-section">
+                <h3>Specify your Service</h3>
+                <div class="custom-service">
+                    <input type="text" id="service-input" placeholder="Enter your service" class="input-box"> <!-- Custom service input -->
+                    <select id="category-options" class="category-dropdown"> <!-- Dropdown for custom category -->
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="art-services">Art Services</option>
+                        <option value="construction">Construction & Fabrication</option>
+                        <option value="tech-assistance">Tech Assistance</option>
+                        <option value="event-media">Event & Media</option>
+                        <option value="personal-care">Personal Care</option>
+                    </select>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+     window.onload = function () {
+    const continueBtn = document.querySelector('.continue-button');
+    const customCategorySelect = document.getElementById('category-options'); // Custom category dropdown
+    const serviceInput = document.getElementById('service-input'); // Custom service input
+    const predefinedCategories = document.querySelectorAll('.categories select'); // All predefined category dropdowns
+
+    // Initially enable both predefined categories and custom service
+    serviceInput.disabled = false;
+    customCategorySelect.disabled = false;
+
+    // Check if any predefined category is selected
+    const checkPredefinedSelection = () => {
+        let isAnyPredefinedSelected = false;
+
+        predefinedCategories.forEach((dropdown) => {
+            if (dropdown.value) {
+                isAnyPredefinedSelected = true;
+            }
+        });
+
+        // Disable custom service inputs if any predefined category is selected
+        serviceInput.disabled = isAnyPredefinedSelected;
+        customCategorySelect.disabled = isAnyPredefinedSelected;
+
+        // Clear custom inputs if predefined category is selected
+        if (isAnyPredefinedSelected) {
+            serviceInput.value = '';
+            customCategorySelect.value = '';
+            serviceInput.classList.remove('error'); // Remove red border if previously applied
+            customCategorySelect.classList.remove('error');
+        }
+    };
+
+    // Attach event listeners to predefined category dropdowns
+    predefinedCategories.forEach((dropdown) => {
+        dropdown.addEventListener('change', checkPredefinedSelection);
+    });
+
+    // Handle the Continue button click
+    continueBtn.addEventListener('click', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('user_id');
+
+        if (!userId) {
+            alert('User ID is missing.');
+            return;
+        }
+
+        let selectedCategory = null;
+        let selectedService = null;
+
+        // Reset error styles
+        predefinedCategories.forEach((dropdown) => dropdown.classList.remove('error'));
+        serviceInput.classList.remove('error');
+        customCategorySelect.classList.remove('error');
+
+        // Check if any predefined category is selected
+        predefinedCategories.forEach((dropdown) => {
+            if (dropdown.value) {
+                selectedCategory = dropdown.id; // Use the dropdown ID as the category name
+                selectedService = dropdown.value; // Selected service
+            }
+        });
+
+        // If no predefined category/service is selected, check custom service
+        if (!selectedCategory) {
+            if (customCategorySelect.value && serviceInput.value.trim()) {
+                selectedCategory = customCategorySelect.value; // Use custom category
+                selectedService = serviceInput.value.trim(); // Custom service
+            } else {
+                // Highlight empty fields in red
+                if (!customCategorySelect.value) {
+                    customCategorySelect.classList.add('error');
+                }
+                if (!serviceInput.value.trim()) {
+                    serviceInput.classList.add('error');
+                }
+                alert('Please fill out the required fields!');
+                return;
+            }
+        }
+
+        console.log('Selected Category:', selectedCategory);
+        console.log('Selected Service:', selectedService);
+
+        // Prepare data to send to PHP
+        const formData = new FormData();
+        formData.append('user_id', userId);
+        formData.append('category', selectedCategory);
+        formData.append('service', selectedService);
+
+        fetch('save_category.php', {
+            method: 'POST',
+            body: formData,
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    alert('Category and service saved successfully!');
+                    window.location.href = 'login.html'; // Redirect to login page
+                } else {
+                    alert('Error saving category or service: ' + data.message);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+};
+
+
+
+    </script>
+</body>
+</html>

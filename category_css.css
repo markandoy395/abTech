@@ -1,0 +1,179 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Fallback background color */
+    background-image: url('construction-site-silhouettes.jpg'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+/* Container styling */
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    position: absolute;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+/* Header styling */
+.header {
+    background-color: #52565c; /* Dark blue header background */
+    padding: 20px;
+    display: flex;
+    width: 60%;
+    border-radius: 0 0px 30px 0; /* Round only the right corners */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.continue-button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background-color: #ff7700; /* Bright orange */
+    color: white;
+    border: none;
+    width: 30%;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.continue-button:hover {
+    background-color: #ff8a33;
+}
+
+/* Content section styling */
+.content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Categories section */
+.categories-section h2 {
+    color: #ff7700; /* Orange category label */
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two-column layout for dropdowns */
+    gap: 15px;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dropdown label {
+    font-size: 1rem;
+    color: #52565c;
+}
+
+.dropdown select {
+    border: none;
+    border-bottom: 2px solid #ccc; /* Adds a line at the bottom */
+    padding: 5px 10px;
+    font-size: 1rem;
+    background: transparent; /* Removes the background */
+    color: #52565c; /* Text color */
+    cursor: pointer;
+    outline: none; /* Removes the outline on focus */
+    transition: border-color 0.3s;
+}
+
+.dropdown select option {
+    color: #000; /* Options text color */
+    background: #fff; /* Options background color */
+}
+
+.dropdown select:hover,
+.dropdown select:focus {
+    border-color: #ff7700; /* Orange color on hover or focus */
+}
+
+.dropdown select option[value=""] {
+    display: none; /* Hides the empty placeholder option in the dropdown list */
+}
+
+/* Custom service section */
+.custom-service-section h3 {
+    color: #ff7700; /* Orange "Specify your Service" label */
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.custom-service {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Input box styling */
+.input-box {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-box:hover,
+.input-box:focus {
+    border-color: #ff7700;
+}
+
+/* Replacing Add button with category dropdown */
+.custom-service .category-dropdown {
+    border: none;
+    border-bottom: 2px solid #ccc; /* Line-only dropdown styling */
+    padding: 5px 10px;
+    font-size: 1rem;
+    background: transparent; /* Transparent background */
+    color: #52565c;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 50%;
+}
+
+.custom-service .category-dropdown:hover,
+.custom-service .category-dropdown:focus {
+    border-color: #ff7700; /* Orange border on hover or focus */
+}
+
+.custom-service .category-dropdown option {
+    color: #000;
+    background: #fff;
+}
+
+.custom-service .category-dropdown option[value=""] {
+    display: none;
+}
+.error {
+    border: 2px solid red;
+}
